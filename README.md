@@ -8,7 +8,7 @@
 </p>
 
 <p align=center>
-   Legacy Docker image for Varnish Cache with the bundled `default.vcl` and entrypoint used by older Dockette stacks.
+   Legacy Docker image for Varnish Cache with the bundled <code>default.vcl</code> and entrypoint used by older Dockette stacks.
 </p>
 
 -----
@@ -55,6 +55,8 @@ make build
 make test
 make run
 ```
+
+`make run` starts a temporary backend as `app:80` for the bundled VCL.
 
 ## Maintenance
 

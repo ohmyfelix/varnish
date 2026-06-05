@@ -15,4 +15,6 @@ test:
 
 .PHONY: run
 run:
-	docker run --rm -it -p 80:80 ${DOCKER_IMAGE}:${DOCKER_TAG}
+	docker network create varnish-run >/dev/null 2>&1 || true
+	docker run --rm -d --name varnish-app --network varnish-run --network-alias app nginx:alpine
+	docker run --rm -it -p 80:80 --network varnish-run ${DOCKER_IMAGE}:${DOCKER_TAG}; status=$$?; docker stop varnish-app >/dev/null; exit $$status
